@@ -1,16 +1,5 @@
 
-# Overview
-
-This repo contains the python source code to run the method described in "Topological data analysis reveals principles ofchromosome structure throughout cellulardifferentiation" (Sauerwald, Shen and Kingsford), which apply persistent homology method to HiC data and anaylze structure changes across cell types. Specifically, the code will generate distance matrix from HiC contact matrix and use gudhi to output persistence pairs and all the simplices of the skeleton. Besides, it can be used for outputing persitence diagram, persistence barcode and other structural anaylsis. 
-
-
-# Dependencies
-
-To use this python source code, you must have installed GUDHI library first. GUDHI is a python package used for topological data analysis(TDA), and you can visit the webpage (http://gudhi.gforge.inria.fr/python/latest/) for more information. 
-
-Install GUDHI with conda: 
-conda install -c conda-forge gudhi
-
+# This is the fork of Kingsford-Group/hictda
 
 # Usage
 ```

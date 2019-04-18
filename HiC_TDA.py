@@ -173,6 +173,8 @@ def writeDistMatToFile(distmat,filename):
     print('wrote distance matrix to',filename)
 
 def main(input_file,output_path,output_name,resol):
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
     resolut,freq_mat=read_raw_HiC_data_no_split(input_file,resol)
     print("generate distance matrix...")
     distance_matrix=matrix_normalize([freq_mat])[0]
@@ -185,11 +187,15 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('-i', type=str,help= "input file of HiC contact matrix")
-    parser.add_argument('-o',type=str, help='the name of output files')
-    parser.add_argument('-p',type=str,help="the path of output files")
-    parser.add_argument('-r',type=str,help="resolution of HiC input file")
+    parser.add_argument('-i', type=str, help= "input file of HiC contact matrix")
+    parser.add_argument('-o', type=str, default="output", help='the name of output files')
+    parser.add_argument('-p', type=str, default="./tmp/", help="the path of output files")
+    parser.add_argument('-r', type=str, default="100000", help="resolution of HiC input file")
 
     args=parser.parse_args()
+    if args.i is None:
+        print('No input data provided!')
+        raise SystemExit
+
     main(args.i,args.p,args.o,args.r)
 
